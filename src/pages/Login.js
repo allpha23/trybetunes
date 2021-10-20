@@ -1,14 +1,23 @@
-import React from "react";
+import React from 'react';
 
 class Login extends React.Component {
   render() {
-    return(
+    return (
       <div data-testid="page-login">
-        <label >
+        <label htmlFor="name">
           Nome:
-          <input type="text" name="name" />
+          <input
+            data-testid="login-name-input"
+            id="name"
+            type="text"
+            name="name"
+          />
         </label>
-        <input type="submit" value="Entrar" />
+        <input
+          data-testid="login-submit-button"
+          type="submit"
+          value="Entrar"
+        />
       </div>
     );
   }

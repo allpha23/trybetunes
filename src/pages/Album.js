@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 class Album extends React.Component {
   render() {
-    return(
+    return (
       <div data-testid="page-album" />
     );
   }
