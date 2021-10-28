@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 
 class Album extends React.Component {
@@ -46,14 +47,15 @@ class Album extends React.Component {
     const { album } = this.state;
     return (
       <di>
-        { album.slice(1).map(({ trackId, trackName, previewUrl }) => (
-          <div key={ trackId }>
-            <h4>{ trackName }</h4>
-            <audio data-testid="audio-component" src={ previewUrl } controls>
+        { album.slice(1).map((music) => (
+          <div key={ music.trackId }>
+            <h4>{ music.trackName }</h4>
+            <audio data-testid="audio-component" src={ music.previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
               <code>audio</code>
             </audio>
+            <MusicCard music={ music } />
           </div>
         ))}
       </di>
