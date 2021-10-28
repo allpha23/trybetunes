@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 class Album extends React.Component {
   constructor() {
@@ -10,14 +12,37 @@ class Album extends React.Component {
     this.state = {
       album: [],
       response: false,
+      loading: false,
+      favorites: [],
     };
 
     this.getMusicDetails = this.getMusicDetails.bind(this);
     this.listMusics = this.listMusics.bind(this);
+    this.testCheckBox = this.testCheckBox.bind(this);
   }
 
   componentDidMount() {
     this.listMusics();
+    this.handleGetFavoriteSong();
+  }
+
+  componentDidUpdate(_prevProps, prevState) {
+    const { favorites } = this.state;
+    if (prevState.favorites !== favorites) {
+      this.testCheckBox();
+    }
+  }
+
+  async handleGetFavoriteSong() {
+    this.setState({
+      loading: true,
+    }, async () => {
+      const favorite = await getFavoriteSongs();
+      this.setState({
+        favorites: favorite,
+        loading: false,
+      });
+    });
   }
 
   getMusicDetails() {
@@ -34,6 +59,16 @@ class Album extends React.Component {
     }
   }
 
+  testCheckBox() {
+    const { favorites } = this.state;
+    favorites.forEach(({ trackId }) => {
+      const favorite = document.getElementById(trackId);
+      if (favorite) {
+        favorite.checked = true;
+      }
+    });
+  }
+
   async listMusics() {
     const { match: { params: { id } } } = this.props;
     const music = await getMusics(id);
@@ -46,7 +81,7 @@ class Album extends React.Component {
   renderMusics() {
     const { album } = this.state;
     return (
-      <di>
+      <div>
         { album.slice(1).map((music) => (
           <div key={ music.trackId }>
             <h4>{ music.trackName }</h4>
@@ -58,13 +93,15 @@ class Album extends React.Component {
             <MusicCard music={ music } />
           </div>
         ))}
-      </di>
+      </div>
     );
   }
 
   render() {
+    const { loading } = this.state;
     return (
       <div data-testid="page-album">
+        { loading && <Loading /> }
         <Header />
         { this.getMusicDetails() }
         { this.renderMusics() }
