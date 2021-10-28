@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
 
@@ -35,7 +35,7 @@ class Search extends React.Component {
     this.setState({
       loading: true,
       artist: name,
-    },async () => {
+    }, async () => {
       const { artist } = this.state;
       const album = await searchAlbumsAPI(artist);
       this.setState({
@@ -44,8 +44,6 @@ class Search extends React.Component {
         loading: false,
       });
     });
-
-
   }
 
   createCards() {
