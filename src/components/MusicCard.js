@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 class MusicCard extends React.Component {
@@ -14,16 +14,23 @@ class MusicCard extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange() {
-    const { music } = this.props;
+  async onInputChange({ target }) {
+    const { music, fetch } = this.props;
     this.setState({
       loading: true,
     }, async () => {
-      await addSong(music);
+      if (target.checked) {
+        await addSong(music);
+      } else await removeSong(music);
       this.setState({
         loading: false,
       });
     });
+    await fetch();
+  }
+
+  isCheked(favorites, music) {
+    favorites.every((favorite) => favorite.trackId === music.trackId);
   }
 
   render() {
@@ -49,9 +56,13 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
+  favorites: PropTypes.shape({
+    trackId: PropTypes.number,
+  }),
+  fetch: PropTypes.func,
   music: PropTypes.shape({
     trackId: PropTypes.number,
-  }).isRequired,
-};
+  }),
+}.isRequired;
 
 export default MusicCard;
