@@ -1,0 +1,39 @@
+.albumContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 80px;
+}
+
+.album {
+  height: 70vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+.musics {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.musicCard {
+  height: 110px;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #3D3A41;
+
+  h4 {
+    width: 160px;
+  }
+}
