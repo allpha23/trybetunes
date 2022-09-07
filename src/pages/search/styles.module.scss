@@ -1,0 +1,90 @@
+.SearchContainer {
+  height: 100%;
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  input {
+    height: 30px;
+    border: 0;
+    padding: 0;
+    outline: none;
+  }
+}
+
+.inputSearch {
+  width: 400px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.inputSubmit {
+  width: 100px;
+  margin-left: 27px;
+  background-color: #5f32fd;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-weight: bold;
+  transition: .3s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+}
+
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  section {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}
+
+.spanSearch {
+  width: 90%;
+
+  h3 {
+    color: #F3F3F9;
+
+    span {
+      color: #25E2A3;
+    }
+  }
+}
+
+.card {
+  height: 290px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #27242C;
+  margin: 15px;
+  text-align: center;
+
+  img {
+    height: 150px;
+    width: 150px;
+    margin-top: 20px;
+  }
+
+  a {
+    margin-top: 10px;  
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  p {
+    width: 230px;
+  }
+}
