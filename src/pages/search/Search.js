@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Loading from './Loading';
+import Header from '../../components/header/Header';
+import searchAlbumsAPI from '../../services/searchAlbumsAPI';
+import Loading from '../Loading';
+import styles from './styles.module.scss';
 
 class Search extends React.Component {
   constructor() {
@@ -50,19 +51,24 @@ class Search extends React.Component {
     const { artist, card } = this.state;
     if (card.length === 0) return <h2>Nenhum álbum foi encontrado</h2>;
     return (
-      <div>
-        <h3>{ `Resultado de álbuns de: ${artist}` }</h3>
+      <div className={ styles.cardContainer }>
+        <div className={ styles.spanSearch }>
+          <h3>
+            Resultado de álbuns para
+            <span>{` ${artist}`}</span>
+          </h3>
+        </div>
         <section>
           { card.map((album, index) => (
-            <div key={ album.collectionId }>
+            <div className={ styles.card } key={ album.collectionId }>
               <img src={ album.artworkUrl100 } alt={ album.collectionName } />
-              <p>{ album.collectionName }</p>
               <Link
                 to={ `/album/${album.collectionId}` }
                 data-testid={ `link-to-album-${album.collectionId}` }
               >
                 { `Album ${index + 1}` }
               </Link>
+              <p>{ album.collectionName }</p>
             </div>
           ))}
         </section>
@@ -77,19 +83,18 @@ class Search extends React.Component {
         {
           loading ? <Loading />
             : (
-              <div>
-                <label htmlFor="input-search">
-                  <input
-                    onChange={ this.onInputChange }
-                    data-testid="search-artist-input"
-                    id="input-search"
-                    type="text"
-                    name="name"
-                    value={ name }
-                  />
-                </label>
-
+              <div className={ styles.SearchContainer }>
                 <input
+                  className={ styles.inputSearch }
+                  onChange={ this.onInputChange }
+                  data-testid="search-artist-input"
+                  type="text"
+                  name="name"
+                  placeholder="Nome do Artista"
+                  value={ name }
+                />
+                <input
+                  className={ styles.inputSubmit }
                   onClick={ this.onClickButton }
                   disabled={ name.length < min }
                   data-testid="search-artist-button"

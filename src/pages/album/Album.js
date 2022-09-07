@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import MusicCard from '../components/MusicCard';
-import getMusics from '../services/musicsAPI';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
-import Loading from './Loading';
+import Header from '../../components/header/Header';
+import MusicCard from '../../components/MusicCard';
+import getMusics from '../../services/musicsAPI';
+import { getFavoriteSongs } from '../../services/favoriteSongsAPI';
+import Loading from '../Loading';
+import styles from './styles.module.scss';
 
 class Album extends React.Component {
   constructor() {
@@ -50,7 +51,7 @@ class Album extends React.Component {
     if (response) {
       const { artworkUrl100, artistName, collectionName } = album[0];
       return (
-        <div>
+        <div className={ styles.album }>
           <img src={ artworkUrl100 } alt={ artistName } />
           <h3 data-testid="album-name">{ collectionName }</h3>
           <p data-testid="artist-name">{artistName}</p>
@@ -81,16 +82,16 @@ class Album extends React.Component {
   renderMusics() {
     const { album } = this.state;
     return (
-      <div>
+      <div className={ styles.musics }>
         { album.slice(1).map((music) => (
-          <div key={ music.trackId }>
+          <div key={ music.trackId } className={ styles.musicCard }>
             <h4>{ music.trackName }</h4>
             <audio data-testid="audio-component" src={ music.previewUrl } controls>
               <track kind="captions" />
               O seu navegador não suporta o elemento
               <code>audio</code>
             </audio>
-            <MusicCard music={ music } />
+            <MusicCard music={ music } fetch={ () => {} } />
           </div>
         ))}
       </div>
@@ -103,8 +104,10 @@ class Album extends React.Component {
       <div data-testid="page-album">
         { loading && <Loading /> }
         <Header />
-        { this.getMusicDetails() }
-        { this.renderMusics() }
+        <div className={ styles.albumContainer }>
+          { this.getMusicDetails() }
+          { this.renderMusics() }
+        </div>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { createUser } from '../services/userAPI';
-import Loading from './Loading';
+import { createUser } from '../../services/userAPI';
+import Loading from '../Loading';
+import styles from './styles.module.scss';
 
 class Login extends React.Component {
   constructor() {
@@ -36,26 +37,27 @@ class Login extends React.Component {
   render() {
     const { name, min, save, loading } = this.state;
     return (
-      <div data-testid="page-login">
-        <label htmlFor="name">
-          Nome:
+      <div className={ styles.container }>
+        <div data-testid="page-login" className={ styles.form }>
           <input
+            className={ styles.inputName }
             onChange={ this.onInputChange }
             data-testid="login-name-input"
-            id="name"
             type="text"
             name="name"
+            placeholder="nome"
           />
-        </label>
-        <input
-          onClick={ this.onClickButton }
-          disabled={ name.length < min }
-          data-testid="login-submit-button"
-          type="submit"
-          value="Entrar"
-        />
-        { loading && <Loading /> }
-        { save && <Redirect to="/search" /> }
+          <input
+            className={ styles.inputSubmit }
+            onClick={ this.onClickButton }
+            disabled={ name.length < min }
+            data-testid="login-submit-button"
+            type="submit"
+            value="Entrar"
+          />
+          { loading && <Loading /> }
+          { save && <Redirect to="/search" /> }
+        </div>
       </div>
     );
   }
