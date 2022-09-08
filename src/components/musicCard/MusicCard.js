@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
-import Loading from '../pages/Loading';
+import { addSong, removeSong } from '../../services/favoriteSongsAPI';
+import Loading from '../../pages/Loading';
+import styles from './styles.module.scss';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -29,25 +30,21 @@ class MusicCard extends React.Component {
     await fetch();
   }
 
-  isCheked(favorites, music) {
-    favorites.every((favorite) => favorite.trackId === music.trackId);
-  }
-
   render() {
     const { music } = this.props;
     const { loading } = this.state;
     return (
       <div>
         { loading && <Loading />}
-        <div>
+        <div className={ styles.check_container }>
+          <input
+            type="checkbox"
+            id={ music.trackId }
+            onChange={ this.onInputChange }
+            data-testid={ `checkbox-music-${music.trackId}` }
+          />
           <label htmlFor={ music.trackId }>
-            Favorita
-            <input
-              type="checkbox"
-              id={ music.trackId }
-              onChange={ this.onInputChange }
-              data-testid={ `checkbox-music-${music.trackId}` }
-            />
+            <i className="fa-solid fa-heart" />
           </label>
         </div>
       </div>
