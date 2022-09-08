@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/header/Header';
 import Loading from '../Loading';
-import MusicCard from '../../components/MusicCard';
+import MusicCard from '../../components/musicCard/MusicCard';
 import { getFavoriteSongs } from '../../services/favoriteSongsAPI';
 import styles from './styles.module.scss';
 
@@ -42,6 +42,7 @@ class Favorites extends React.Component {
 
   testCheckBox() {
     const { favorites } = this.state;
+
     favorites.forEach(({ trackId }) => {
       const favorite = document.getElementById(trackId);
       if (favorite) {
