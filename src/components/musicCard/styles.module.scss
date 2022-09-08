@@ -1,0 +1,20 @@
+.check_container {
+  label {
+    cursor: pointer;
+    position: relative;
+    font-size: 30px;
+    transition: .3s ease-in-out;
+
+    &:hover {
+      color: #25E2A3;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  :checked ~ label {
+    color: #25E2A3;
+  }
+}
