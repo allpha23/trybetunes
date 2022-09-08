@@ -39,7 +39,8 @@ class Profile extends React.Component {
         <Header />
         <div className={ styles.profile_container }>
           <div className={ styles.logo_container }>
-            <img src={ profileDefault } alt="profile default" />
+            { image ? <img src={ image } alt="profile" />
+              : <img src={ profileDefault } alt="default" />}
             <Link to="/profile/edit">Editar perfil</Link>
           </div>
           <form className={ styles.form }>
