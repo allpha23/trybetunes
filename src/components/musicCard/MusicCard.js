@@ -43,6 +43,7 @@ class MusicCard extends React.Component {
             onChange={ this.onInputChange }
             data-testid={ `checkbox-music-${music.trackId}` }
           />
+          { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
           <label htmlFor={ music.trackId }>
             <i className="fa-solid fa-heart" />
           </label>
