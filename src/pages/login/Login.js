@@ -3,6 +3,8 @@ import { Redirect } from 'react-router';
 import { createUser } from '../../services/userAPI';
 import Loading from '../Loading';
 import styles from './styles.module.scss';
+import musicAnimate from '../../images/musicAnimate.svg';
+import trybeTunes from '../../images/trybeTunes.svg';
 
 class Login extends React.Component {
   constructor() {
@@ -38,7 +40,11 @@ class Login extends React.Component {
     const { name, min, save, loading } = this.state;
     return (
       <div className={ styles.container }>
+        <div className={ styles.img_container }>
+          <img src={ musicAnimate } alt="music animate" />
+        </div>
         <div data-testid="page-login" className={ styles.form }>
+          <img src={ trybeTunes } alt="trybe tunes logo" />
           <input
             className={ styles.inputName }
             onChange={ this.onInputChange }
