@@ -49,7 +49,13 @@ class Search extends React.Component {
 
   createCards() {
     const { artist, card } = this.state;
-    if (card.length === 0) return <h2>Nenhum álbum foi encontrado</h2>;
+    if (card.length === 0) {
+      return (
+        <div className={ styles.not_found }>
+          <h2>Nenhum álbum foi encontrado</h2>
+        </div>
+      );
+    }
     return (
       <div className={ styles.cardContainer }>
         <div className={ styles.spanSearch }>
