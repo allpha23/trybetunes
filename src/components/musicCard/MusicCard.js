@@ -17,16 +17,11 @@ class MusicCard extends React.Component {
 
   async onInputChange({ target }) {
     const { music, fetch } = this.props;
-    this.setState({
-      loading: true,
-    }, async () => {
-      if (target.checked) {
-        await addSong(music);
-      } else await removeSong(music);
-      this.setState({
-        loading: false,
-      });
-    });
+
+    if (target.checked) {
+      await addSong(music);
+    } else await removeSong(music);
+
     await fetch();
   }
 
