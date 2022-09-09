@@ -36,7 +36,9 @@ class Header extends React.Component {
   headerLogo(name) {
     return (
       <div className={ styles.logo }>
-        <img src={ trybeTunesLogo } alt="trybe tunes logo" />
+        <Link to="/search">
+          <img src={ trybeTunesLogo } alt="trybe tunes logo" />
+        </Link>
         <p data-testid="header-user-name">{ name }</p>
       </div>);
   }
