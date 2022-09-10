@@ -30,7 +30,7 @@ git clone git@github.com:allpha23/trybetunes.git
 # entrar na pasta do projeto
 cd trybetunes
 
-# Instalar as dependências
+# Instalar dependências
 npm install
 
 # executar o projeto
