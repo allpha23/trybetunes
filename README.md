@@ -11,6 +11,19 @@ O projeto foi feito consumindo dados da _Itunes API_ e exibindo-os usando todos 
 ## Layout web
 
 
+<div>
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/login.png">
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/pesquisar.png">
+</div>
+<div>
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/album.png">
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/favoritos.png">
+</div>
+<div>
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/perfil.png">
+<img width="48%" src="https://github.com/allpha23/assets/raw/main/trybeTunes/editar.png">
+</div>
+
 # Tecnologias utilizadas:
 
 - React
