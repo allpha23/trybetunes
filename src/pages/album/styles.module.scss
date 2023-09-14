@@ -37,3 +37,30 @@
     width: 160px;
   }
 }
+
+@media (max-width: 760px) {
+  .albumContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .album {
+    width: 80%;
+    height: auto;
+    margin-bottom: 50px;
+  }
+
+  .musics {
+    width: 90%;
+  }
+
+  .musicCard {
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+
+    h4 {
+      width: auto;
+    }
+  }
+}

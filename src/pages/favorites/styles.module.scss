@@ -18,3 +18,11 @@
     width: 160px;
   }
 }
+
+@media (max-width: 760px) {
+  .music_card {
+    height: auto;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+}

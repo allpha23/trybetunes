@@ -98,3 +98,15 @@
     width: 230px;
   }
 }
+
+@media (max-width: 760px) {
+  .inputSearch {
+    width: 50%;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .inputSubmit {
+    width: 80px;
+  }
+}
